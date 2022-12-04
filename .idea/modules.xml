@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/popup_message.iml" filepath="$PROJECT_DIR$/.idea/popup_message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/toast-messages.iml" filepath="$PROJECT_DIR$/.idea/toast-messages.iml" />
     </modules>
   </component>
 </project>
