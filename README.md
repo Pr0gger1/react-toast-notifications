@@ -1,10 +1,10 @@
 ## Example
 ```jsx
 const {showToast, toastList, setToastList} = useToast();
-<burtton onClick={
+<button onClick={
     () => new showToast("Hello world!", "This is a title!").success
 }>Click me!
-</burtton>
+</button>
 
 <Toast position="top_center" setToastList={setToastList} toastList={toastList}/>
 ```
