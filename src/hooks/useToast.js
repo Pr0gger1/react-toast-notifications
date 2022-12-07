@@ -3,51 +3,31 @@ import {useState} from "react";
 export const useToast = () => {
     const [toastList, setToastList] = useState([]);
 
-    const showToast = (type = "info", description, title) => {
-        let toastTypes = {
-            info: {
+    class showToast {
+        constructor(description, title) {
+            this.properties = {
                 id: toastList.length,
-                title: title || "",
-                description: description || "Toast",
-                type: "info"
-            }, success: {
-                id: toastList.length,
-                title: title || "",
-                description: description || "Toast",
-                type: "success"
-            }, warning: {
-                id: toastList.length,
-                title: title || "",
-                description: description || "Toast",
-                type: "warning"
-            }, error: {
-                id: toastList.length,
-                title: title || "",
-                description: description || "Toast",
-                type: "error"
-            }
-        };
-
-        let toastProperties = null;
-        switch (type) {
-            case "info":
-                toastProperties = toastTypes.info;
-                break;
-            case "success":
-                toastProperties = toastTypes.success;
-                break;
-            case "warning":
-                toastProperties = toastTypes.warning;
-                break;
-            case "error":
-                toastProperties = toastTypes.error;
-                break;
-            default:
-                console.log("default");
-                break;
+                title: title,
+                description: description,
+                type: "default"
+            };
         }
-
-        setToastList([...toastList, toastProperties]);
+        get info() {
+            this.properties.type = "info";
+            return setToastList([...toastList, this.properties]);
+        }
+        get success() {
+            this.properties.type = "success";
+            return setToastList([...toastList, this.properties]);
+        }
+        get warning() {
+            this.properties.type = "warning";
+            return setToastList([...toastList, this.properties]);
+        }
+        get error() {
+            this.properties.type = "error";
+            return setToastList([...toastList, this.properties]);
+        }
     }
 
     return {toastList, setToastList, showToast};

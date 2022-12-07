@@ -1,13 +1,13 @@
 import classes from "./button.module.css";
 
 export const Button = ({
-   children, handleClick, style = "", bgcolor="#666", textColor = "#eaeaea",
-    ...props
+   children, handleClick, background="#666",
+   textColor = "#eaeaea", ...props
 }) => {
     return (
         <button className={classes.btn} onClick={handleClick} {...props}
         style={{
-            backgroundColor: bgcolor,
+            backgroundColor: background,
             color: textColor
         }}>
             {children}

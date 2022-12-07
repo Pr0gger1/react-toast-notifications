@@ -1,7 +1,8 @@
 import {Button} from "./components/ui/buttons/Button";
-import Toast from "./components/ui/toast/Toast";
 
+import Toast from "./components/ui/toast/Toast";
 import {useToast} from "./hooks/useToast";
+
 
 function App() {
     const {showToast, toastList, setToastList} = useToast();
@@ -10,26 +11,29 @@ function App() {
     <div className="container">
         <h1>Toast components</h1>
         <div className="toast__buttons">
-            <Button bgcolor="#03b309" handleClick={() => showToast(
-                "success", "Operation completed successfully!", "Success!")}>
+            <Button background="#03b309" handleClick={
+                () => new showToast("Operation completed successfully!", "Success").success
+            }>
                 Access Toast
             </Button>
 
-            <Button bgcolor="#2b8ad2" handleClick={() => showToast(
-                "info", "Informational message", "Info")}>
+            <Button background="#2b8ad2" handleClick={
+                () => new showToast("Informational message", "Info").info
+            }>
                 Info Toast
             </Button>
 
-            <Button bgcolor="#e23e32" handleClick={() => showToast(
-                "error", "An unknown error happened!", "Ошибка")}>
+            <Button background="#e23e32" handleClick={
+                () => new showToast("An unknown error happened!", "Ошибка").error
+            }>
                 Error Toast
             </Button>
 
-            <Button bgcolor="#edba0d" handleClick={() => showToast(
-                "warning", "Warning", "Pay attention!")}>
+            <Button background="#edba0d" handleClick={
+                () => new showToast("Warning", "Pay attention!").warning
+            }>
                 Warning Toast
             </Button>
-
         </div>
 
         <Toast position="top_left" toastList={toastList} setToastList={setToastList}/>

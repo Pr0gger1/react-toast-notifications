@@ -1,11 +1,9 @@
 import {useCallback, useEffect} from "react";
 import classes from "./toast.module.css";
 
-const Toast = ({
-   toastList, setToastList, position = "top_right", fade_time = 3000
-}) => {
-
-    let isPositionCorrect = ["top_right", "bottom_right", "top_left", "bottom_left"].includes(position);
+const Toast = ({toastList, setToastList, position = "top_right", fade_time = 3000}) => {
+    let isPosCorrect = ["top_right", "top_left", "top_center", "bottom_right", "bottom_left", "bottom_center"]
+        .includes(position);
 
     const deleteToast = useCallback(id => {
         setToastList(toastList.filter(el => el.id !== id));
@@ -24,17 +22,22 @@ const Toast = ({
     }, [deleteToast, fade_time, toastList]);
     
     return (
-        <div className={`${classes.toast_container} ${isPositionCorrect ? classes[position] : classes["top_right"] }`}>
+        <div className={
+            `${classes.toast_container} ${isPosCorrect ? classes[position] : classes["top_right"] }`
+        }>
             {
                 toastList.map((toast, index) => (
                    <div key={index}
-                        className={`${classes.toast} ${classes[toast.type]} ${isPositionCorrect ? classes[position] : classes["top_right"] }`}
-                   >
-                       <button className={classes.close} onClick={() => deleteToast(toast.id)}></button>
+                        className={`${classes.toast} ${classes[toast.type]}
+                         ${isPosCorrect ? classes[position] : classes["top_right"]}`
+                   }>
+                       <span className={classes.close} onClick={() => deleteToast(toast.id)}></span>
                        <div>
                            <p className={classes.title}>{toast.title}</p>
                            <p className={classes.description}>{toast.description}</p>
                        </div>
+                       {/*frozen component*/}
+                       {/*<div className={classes.progress_bar}></div>*/}
 
                    </div>
                 ))
