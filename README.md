@@ -1,8 +1,9 @@
 ## Example
+
 ```jsx
-const {showToast, toastList, setToastList} = useToast();
+const {toastElement, toastList, setToastList} = useToast();
 <button onClick={
-    () => new showToast("Hello world!", "This is a title!").success
+    () => new toastElement("Hello world!", "This is a title!").success
 }>Click me!
 </button>
 

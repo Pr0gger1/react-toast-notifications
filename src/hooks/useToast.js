@@ -3,7 +3,7 @@ import {useState} from "react";
 export const useToast = () => {
     const [toastList, setToastList] = useState([]);
 
-    class showToast {
+    class toastElement {
         constructor(description, title) {
             this.properties = {
                 id: toastList.length,
@@ -30,5 +30,5 @@ export const useToast = () => {
         }
     }
 
-    return {toastList, setToastList, showToast};
+    return {toastList, setToastList, toastElement};
 }
