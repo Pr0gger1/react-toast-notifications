@@ -1,11 +1,51 @@
 ## Example
 
 ```jsx
-const {toastElement, toastList, setToastList} = useToast();
-<button onClick={
-    () => new toastElement("Hello world!", "This is a title!").success
-}>Click me!
-</button>
+// App.js
+import React, {useState} from "react";
+import {useToast} from "./hooks/useToast";
 
-<Toast position="top_center" setToastList={setToastList} toastList={toastList}/>
+import ToastContext from "./context/toastContext";
+import Toast from "./components/ui/toast/Toast";
+
+function App() {
+    const {toastElement, toastList, setToastList} = useToast();
+    const [toastPosition, setToastPosition] = useState('top_right');
+    return (
+        <ToastContext.Provider value={{
+            toastList, setToastList, toastElement,
+            position: toastPosition,
+            setPosition: setToastPosition
+        }}>
+            <Component>
+                <InnerComponent/>
+                <Page/>
+                <Toast position="top_center"/>
+            </Component>
+
+        </ToastContext.Provider>
+    );
+
+
+}
+```
+
+```jsx
+// Some Page.jsx
+import React, {useContext} from "react";
+import ToastContext from "./toastContext";
+
+function Page({props}) {
+    const {toastElement} = useContext(ToastContext);
+    
+    return (
+        <div>
+            <button onClick={
+                () => new toastElement("Hello world!", "This is a title!").success
+            }>
+                Click me!
+            </button>
+        </div>
+    );
+}
 ```

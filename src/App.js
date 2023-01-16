@@ -1,17 +1,21 @@
+import {useState} from "react";
 import {useToast} from "./hooks/useToast";
+import ToastContext from "./context/toastContext";
+
 import Button from "./components/buttons/Button";
 import Toast from "./components/toast/Toast";
-import {useEffect, useState} from "react";
 
 function App() {
     const {toastElement, toastList, setToastList} = useToast();
     const [currentPosition, setCurrentPosition] = useState('top_right');
 
-    useEffect(() => {
-        console.log(currentPosition);
-    }, [currentPosition]);
   return (
-    <div className="container">
+      <ToastContext.Provider value={{
+          toastList, setToastList, toastElement,
+          position: currentPosition,
+          setPosition: setCurrentPosition,
+      }}>
+          <div className="container">
 
         <h1>Toast components</h1>
         <div className="toast__buttons">
@@ -79,8 +83,9 @@ function App() {
 
         </div>
 
-        <Toast position={currentPosition} toastList={toastList} setToastList={setToastList}/>
+        <Toast position={currentPosition}/>
     </div>
+      </ToastContext.Provider>
   );
 }
 

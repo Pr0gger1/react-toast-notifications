@@ -1,9 +1,12 @@
-import {useCallback, useEffect} from "react";
+import {useCallback, useContext, useEffect} from "react";
 import classes from "./toast.module.css";
+import ToastContext from "../../context/toastContext";
 
-const Toast = ({toastList, setToastList, position = "top_right", fade_time = 3000}) => {
+const Toast = ({position = "top_right", fade_time = 3000}) => {
     let isPosCorrect = ["top_right", "top_left", "top_center", "bottom_right", "bottom_left", "bottom_center"]
         .includes(position);
+
+    const {toastList, setToastList} = useContext(ToastContext);
 
     const deleteToast = useCallback(id => {
         setToastList(toastList.filter(el => el.id !== id));
