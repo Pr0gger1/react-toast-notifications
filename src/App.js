@@ -1,9 +1,15 @@
 import {useToast} from "./hooks/useToast";
 import Button from "./components/buttons/Button";
 import Toast from "./components/toast/Toast";
+import {useEffect, useState} from "react";
 
 function App() {
     const {toastElement, toastList, setToastList} = useToast();
+    const [currentPosition, setCurrentPosition] = useState('top_right');
+
+    useEffect(() => {
+        console.log(currentPosition);
+    }, [currentPosition]);
   return (
     <div className="container">
 
@@ -34,7 +40,46 @@ function App() {
             </Button>
         </div>
 
-        <Toast position="top_right" toastList={toastList} setToastList={setToastList}/>
+        <div className='toast_position_btn'>
+            <Button
+                value='top_right'
+                onClick={e => setCurrentPosition(e.target.value)}>
+                    Top right
+            </Button>
+
+            <Button
+                value='top_left'
+                onClick={e => setCurrentPosition(e.target.value)}>
+                    Top left
+            </Button>
+
+            <Button
+                value='bottom_right'
+                onClick={e => setCurrentPosition(e.target.value)}>
+                    Bottom right
+            </Button>
+
+            <Button
+                value='bottom_left'
+                onClick={e => setCurrentPosition(e.target.value)}>
+                    Bottom left
+            </Button>
+
+            <Button
+                value='top_center'
+                onClick={e => setCurrentPosition(e.target.value)}>
+                    Top center
+            </Button>
+
+            <Button
+                value='bottom_center'
+                onClick={e => setCurrentPosition(e.target.value)}>
+                    Bottom center
+            </Button>
+
+        </div>
+
+        <Toast position={currentPosition} toastList={toastList} setToastList={setToastList}/>
     </div>
   );
 }

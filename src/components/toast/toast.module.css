@@ -3,6 +3,7 @@
     position: fixed;
     z-index: 10;
     overflow: hidden;
+    max-width: 50%;
 }
 
 .toast {
@@ -15,14 +16,10 @@
     border-radius: 5px;
     transition: 1s ease;
 }
-@media screen and (min-width: 1501px) {
+
+@media screen and (min-width: 1500px) {
     .toast_container {
-        width: 50%;
-    }
-}
-@media screen and (max-width: 1500px) {
-    .toast_container {
-        width: 50%;
+        width: 30%;
     }
 }
 

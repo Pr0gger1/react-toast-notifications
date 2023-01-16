@@ -19,4 +19,16 @@ body {
   display: grid;
   grid-gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+  margin-bottom: 2rem;
+  padding: 1rem
+}
+.toast_position_btn {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+.toast_position_btn button:active {
+  background-color: #5d5a90;
 }
