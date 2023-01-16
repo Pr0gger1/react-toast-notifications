@@ -1,3 +1,7 @@
+# React toast notification
+This is a simple library that implements beautiful notifications in your project. The real example with toast notification you may find in the description of the project.
+1. In the main js file you need to add the hook `useToast` with toast list, set toast list function and toast class. Also you need to add `ToastContext` and drop the above parameters there 
+2. In the desired component, use the `useСontext` hook to call notification instances and change their position
 ## Example
 
 ```jsx
