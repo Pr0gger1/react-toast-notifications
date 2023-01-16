@@ -3,21 +3,34 @@
     position: fixed;
     z-index: 10;
     overflow: hidden;
-    width: 20%;
 }
 
 .toast {
     padding: 0.5rem 1rem;
     margin: 1rem;
-
-    max-width: 100%;
+    flex: 1 1 auto;
     word-break: break-word;
 
     color: #fff;
     border-radius: 5px;
     transition: 1s ease;
 }
+@media screen and (min-width: 1501px) {
+    .toast_container {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 1500px) {
+    .toast_container {
+        width: 50%;
+    }
+}
 
+@media screen and (max-width: 375px) {
+    .toast_container {
+        width: 80%;
+    }
+}
 /*frozen component*/
 /*.progress_bar {*/
 /*    background-color: #c5c4c4;*/

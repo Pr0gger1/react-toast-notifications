@@ -1,15 +1,9 @@
 import classes from "./button.module.css";
 
-const Button = ({
-   children, handleClick, background="#666",
-   textColor = "#eaeaea", ...props
-}) => {
+const Button = ({children, handleClick, variant = "default"}) => {
     return (
-        <button className={classes.btn} onClick={handleClick} {...props}
-        style={{
-            backgroundColor: `#${background}`,
-            color: textColor
-        }}>
+        <button className={`${classes.btn} ${classes["btn-" + variant]}`}
+                onClick={handleClick}>
             {children}
         </button>
     )
