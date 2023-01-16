@@ -36,7 +36,11 @@ import React, {useContext} from "react";
 import ToastContext from "./toastContext";
 
 function Page({props}) {
-    const {toastElement} = useContext(ToastContext);
+    const {toastElement, setPosition} = useContext(ToastContext);
+    
+    useEffect(() => {
+        setPosition("top_center");
+    }, [setPosition]);
     
     return (
         <div>
