@@ -1,6 +1,6 @@
 import {useCallback, useContext, useEffect} from "react";
-import classes from "./toast.module.css";
 import ToastContext from "../../context/toastContext";
+import styles from "./toast.module.css";
 
 const Toast = ({position = "top_right", fade_time = 3000}) => {
     let isPosCorrect = ["top_right", "top_left", "top_center", "bottom_right", "bottom_left", "bottom_center"]
@@ -11,7 +11,6 @@ const Toast = ({position = "top_right", fade_time = 3000}) => {
     const deleteToast = useCallback(id => {
         setToastList(toastList.filter(el => el.id !== id));
     }, [setToastList, toastList]);
-
 
     // toast disappearance mechanism
     useEffect(() => {
@@ -26,25 +25,21 @@ const Toast = ({position = "top_right", fade_time = 3000}) => {
     
     return (
         <div className={
-            `${classes.toast_container} ${isPosCorrect ? classes[position] : classes["top_right"] }`
-        }>
-            {
-                toastList.map((toast, index) => (
-                   <div key={index}
-                        className={`${classes.toast} ${classes[toast.type]}
-                         ${isPosCorrect ? classes[position] : classes["top_right"]}`
-                   }>
-                       <span className={classes.close} onClick={() => deleteToast(toast.id)}></span>
-                       <div>
-                           <p className={classes.title}>{toast.title}</p>
-                           <p className={classes.description}>{toast.description}</p>
-                       </div>
-                       {/*frozen component*/}
-                       {/*<div className={classes.progress_bar}></div>*/}
-
-                   </div>
-                ))
-            }
+        `${styles.toast_container} ${isPosCorrect ?
+            styles[position] : styles.top_right }`
+    }>
+        {
+            toastList.map((toast, index) => (
+                <div id={index.toString()} key={toast.id}
+                     className={`${styles.toast} ${styles[toast.type]}`}>
+                    <span className={styles.close} onClick={() => deleteToast(toast.id)}></span>
+                    <div>
+                        <p className={styles.title}>{toast.title}</p>
+                        <p className={styles.description}>{toast.description}</p>
+                    </div>
+                </div>
+            ))
+        }
         </div>
     )
 }

@@ -1,7 +1,8 @@
 {
   "name": "react-toast-notifications",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.1",
+  "description": "Simple toast notification based on React",
+  "main": "src/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -18,11 +19,19 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pr0gger1/react-toast-notifications.git"
+  },
+  "keywords": [
+    "react",
+    "toast"
+  ],
+  "author": "Pr0gger1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pr0gger1/react-toast-notifications/issues"
   },
   "browserslist": {
     "production": [
